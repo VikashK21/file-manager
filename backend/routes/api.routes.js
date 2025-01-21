@@ -10,8 +10,9 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/dir/:level", DirManager_Ctrller.getDirectoryAtLevel);
-router.put("/dir/:ID", DirManager_Ctrller.updateDirectory);
-router.delete("/dir/:ID", DirManager_Ctrller.deleteDirectory);
+router.get("/dir/by/:ID", DirManager_Ctrller.getDirectoryByID);
+router.put("/dir/update/:ID", DirManager_Ctrller.updateDirectory);
+router.delete("/dir/del/:ID", DirManager_Ctrller.deleteDirectory);
 router.post(
   "/dir",
   upload.single("path"),

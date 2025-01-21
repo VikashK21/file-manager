@@ -14,16 +14,33 @@ class DirManager_Ctrller {
     }
   };
 
+  getDirectoryByID = async (req, res) => {
+    try {
+      console.log(req.params.ID, "id");
+      if (req.params.ID) {
+        const data = await DirManager.findById(req.params.ID);
+        res.json(data);
+      } else {
+        res
+          .status(400)
+          .json({ message: "Directory ID in params is required!" });
+      }
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  };
+
   createDirectoryAtLevel = async (req, res) => {
     try {
       const body = req.body;
-      body.type = "folder";
       if (req.file) {
         body.path = req.file.path;
         body.type = "file";
+      } else {
+        body.type = "folder";
       }
       const data = await DirManager.create(body);
-      res.json(data);
+      return res.json(data);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -32,15 +49,17 @@ class DirManager_Ctrller {
   updateDirectory = async (req, res) => {
     try {
       const body = req.body;
+      console.log(body);
       body.type = "folder";
       if (req.params.ID) {
         if (req.file) {
           body.path = req.file.path;
           body.type = "file";
         }
-        const data = await DirManager.findByIdAndUpdate(
-          req.params.ID,
-          req.body
+        const data = await DirManager.findByIdAndUpdate(req.params.ID, body);
+        await DirManager.updateMany(
+          { level: req.params.ID },
+          { level: data.id }
         );
         res.json(data);
       } else {
