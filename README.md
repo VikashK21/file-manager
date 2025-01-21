@@ -32,6 +32,15 @@ npm install // if app doesn't work try after this - rm -rf package-lock.json
 npm run dev
 ```
 
+
+## Deployment
+Both [frontend](https://github.com/VikashK21/file-manager/tree/main/frontend) and [backend](https://github.com/VikashK21/file-manager/tree/main/backend) is deployed on [vercel](https://vercel.com/new)
+
+**Here is the links to access both:**
+
+- backend ---> https://file-manager-c4uy.vercel.app/api/
+- frontend ----> https://file-manager-six-theta.vercel.app/
+
 ## Technologies
 The technologies used in this project are as follow:
 - /backend
@@ -43,11 +52,3 @@ The technologies used in this project are as follow:
 1. Next.js as framework (built-in TypeScript)
 2. Tailwind CSS as CSS framework
 3. Shadcn UI as UI component library
-
-## Deployment
-Both [frontend](https://github.com/VikashK21/file-manager/tree/main/frontend) and [backend](https://github.com/VikashK21/file-manager/tree/main/backend) is deployed on [vercel](https://vercel.com/new)
-
-**Here is the links to access both:**
-
-- backend ---> https://file-manager-c4uy.vercel.app/api/
-- frontend ----> https://file-manager-six-theta.vercel.app/
